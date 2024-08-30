@@ -9,30 +9,33 @@ body {
 .container {
   height: 100vh;
   display: grid;
-  grid-template-columns: [col-start] 50px [col-sidebar-end] auto [col-end];
-  grid-template-rows: [row-start] 30px [row-header-end] auto [row-footer-start] 20px [row-end];
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-auto-rows: max-content;
+  grid-auto-columns: max-content;
+  grid-template-areas: 
+    "header header"
+    "sidebar content"
+    "footer footer";
 }
 
 .header {
   background-color: grey;
-  grid-column: col-start / col-end;
-  grid-row-start: row-start / row-header-end;
+  grid-area: header;
 }
 
 .sidebar {
   background-color: yellow;
-  grid-column: col-start / col-sidebar-end;
-  grid-row: row-header-end / row-footer-start;
+  grid-area: sidebar;
 }
 
 .content {
   background-color: cyan;
-  grid-column: col-sidebar-end / col-end;
-  grid-row: row-header-end / row-footer-start;
+  grid-area: content;
 }
 
 .footer {
   background-color: gray;
-  grid-column: col-start / col-end;
-  grid-row: row-footer-start / row-end;
+  grid-area: footer;
+  grid-auto-rows: max-content;
 }
